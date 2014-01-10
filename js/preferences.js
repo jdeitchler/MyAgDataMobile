@@ -71,7 +71,7 @@
             //    MyAgDataMobile.dataAccess.callService(updateOptions);    
         },
         cropChangeEvent: function (e) {
-            alert("Change the Crop - Update the dropdownlists");
+          //  alert("Change the Crop - Update the dropdownlists");
         }
         });
 
@@ -206,7 +206,7 @@
     //Change CropYear Function
     function cropyearSelect(e) {
         myCropYear = e.sender._selectedValue;
-        alert("Change the Crop Year Code" + myCropYear);
+     //   alert("Change the Crop Year Code" + myCropYear);
         $("span.titleDetails").html(" " + myCropYear + " - " + mySeasonName + " " + myFarmOperationName + " ");
     }
 

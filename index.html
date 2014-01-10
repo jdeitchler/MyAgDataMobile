@@ -963,7 +963,7 @@
         <a href="#:ecodedURI#">
         <div id="content">
           <div id="left">
-               <span class="mt-listitem-title">#:BusinessName# </span><br>
+               <span class="mt-listitem-title">#:CommonFarmName# </span><br>
                <span class="mt-highlight-label" style="width:55px; white-space:nowrap; overflow:hidden; text-overflow: ellipsis;" >#:CalculatedAcres# Planted of #:ReportedAcres# Acres</span> 
          </div>
           <div id="right">
@@ -973,7 +973,7 @@
      #} else {#
         <div id="content">
           <div id="left">
-                <span class="mt-listitem-title">#:BusinessName# </span><br> 
+                <span class="mt-listitem-title">#:CommonFarmName# </span><br> 
                 <span class="mt-highlight-label" style="width:55px; white-space:nowrap; overflow:hidden; text-overflow: ellipsis;" >#:CalculatedAcres# Planted of #:ReportedAcres# Acres</span>
           </div>
           <div id="right">
@@ -987,6 +987,7 @@
 
     <script>
         $(document).ready(function () {
+	    myUserId = "0";
             myCropYear = "2013";
             mySeasonValue = "21";
             mySeasonName = "Winter";

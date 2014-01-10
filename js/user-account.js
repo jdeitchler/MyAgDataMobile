@@ -2,12 +2,12 @@
 	//ViewModel for User Account view
 //	debugger;
 	var viewModel = kendo.observable({
-	    isUserLoggedIn: false,
-        userId: 0,
+	    	isUserLoggedIn: false,
+        	userId: 0,
 		firstName: "",
 		lastName: "",
-		userName: "", //hardcoded
-		password: "", //hardcoded
+		userName: "", 
+		password: "", 
 		userAddress: "",
 		userEmailAddress: "",
 		subscribedForNewsLetter:false,
@@ -33,6 +33,7 @@
 		fnLoginCallBack: function (result) {
 			if (result.success === true && result.data != null) {
 			    viewModel.set("userId", result.data.UserId);
+		            myUserId =  result.data.UserId;
 			    viewModel.set("firstName", result.data.FirstName);
 			    viewModel.set("lastName", result.data.LastName);
 			//	viewModel.set("userAddress", result.data.Address);

@@ -5,10 +5,11 @@
         practiceList: {},
         typeList: {},
         selectedField: {
-            userId: "",
-            partFieldId: "",
-            typeCode: "",
-            practiceCode: ""
+            	userId: "",    
+	 	cropyear: "",
+		growerId: "",
+		partFieldId: "",
+		growerPartFieldId: ""
         },
         growerId: 0,
         growerPartFieldId: 0,
@@ -28,7 +29,7 @@
         updateClick: function (e) {
             //alert('update Field Succeeded -fieldid = ' + this.selectedField.partFieldId);
             //    viewModel.set("selectedField", {
-            //            userId: 16,
+            //            userId: viewModel.selectedField.userId,
             //            partFieldId: viewModel.get("partFieldId"),
             //            typeCode: viewModel.get("typeCode"),
             //            practiceCode: viewModel.get("practiceCode")
@@ -37,7 +38,7 @@
                     url: MyAgDataMobile.configuration.updateFieldDetailUrl,
                     requestType: "GET",
                     dataType: "JSON",
-                    data: { userId: 16, 
+                    data: { userId: viewModel.selectedField.userId, 
                         partFieldId: viewModel.get("partFieldId"),
                         cropId: viewModel.get("cropCode"), 
                         typeCode: viewModel.get("typeCode"), 
@@ -79,7 +80,11 @@
     function loadFieldData() {
         var fieldDetailOptions = {
             url: MyAgDataMobile.configuration.getFieldDetailUrl,
-            data: { userid: 16, growerid: viewModel.growerId, growerpartfieldid: viewModel.growerPartFieldId }, // 259408}, // 258097 },   //id=16&cropyear=2013
+            data: { 
+		    userid: viewModel.selectedField.userId, 
+		    growerid: viewModel.selectedField.growerId, 
+		    growerpartfieldid: viewModel.selectedField.growerPartFieldId 
+		  }, 
             requestType: "GET",
             dataType: "JSON",
             callBack: callBackFieldDetail
@@ -88,10 +93,13 @@
     }
 
     function loadCropData() {
-   //     alert('get crop list for field = ' + viewModel.partFieldId);
         var cropListOptions = {
             url: MyAgDataMobile.configuration.getCropListUrl,
-            data: { userid: 16, partFieldId: viewModel.partFieldId, cropyear: 2013 },   //  254719  // id=16&cropyear=2013
+            data: { 
+		     userid: viewModel.selectedField.userId, 
+		     partFieldId: viewModel.selectedField.partFieldId, 
+		     cropyear: viewModel.selectedField.cropyear
+		   },   
             requestType: "GET",
             dataType: "JSON",
             callBack: cropListCallBack
@@ -102,7 +110,11 @@
     function loadTypeData() {
         var typeListOptions = {
             url: MyAgDataMobile.configuration.getTypeListUrl,
-            data: { id: 16, cropyear: 2013, commodityid: viewModel.cropCode },   //id=16&cropyear=2013
+            data: { 
+		     id: viewModel.selectedField.userId, 
+		     cropyear: viewModel.selectedField.cropyear, 
+	             commodityid: viewModel.cropCode 
+		  },  
             requestType: "GET",
             dataType: "JSON",
             callBack: typeListCallBack
@@ -113,7 +125,11 @@
     function loadPracticeData() {
         var practiceListOptions = {
             url: MyAgDataMobile.configuration.getPracticeListUrl,
-            data: { id: 16, cropyear: 2013, commodityId: viewModel.cropCode },   //id=16&cropyear=2013
+            data: { 
+		     id: viewModel.selectedField.userId, 
+		     cropyear: viewModel.selectedField.cropyear, 
+		     commodityId: viewModel.cropCode 
+		  },   
             requestType: "GET",
             dataType: "JSON",
             callBack: practiceListCallBack
@@ -139,16 +155,17 @@
                     viewModel.set("practiceCode", result.data.PracticeCode);
                     viewModel.set("practiceName", result.data.PracticeAbbreviation);
                 }
-                    viewModel.set("typeCode", result.data.TypeCode);
-                    viewModel.set("typeName", result.data.TypeName);
-                    viewModel.set("countyName", result.data.GrowerCountyName);
-                    viewModel.set("stateName", result.data.GrowerStateName);
-                    viewModel.set("acres", result.data.CalculatedAcres);
-                    viewModel.set("share", result.data.FieldShare);
-                    viewModel.set("fieldName", result.data.BusinessName);
-                    viewModel.set("plantDate", result.data.CompletedDate);
 
-                    if (result.data.CompletedDate != null && result.data.CompletedDate != "")
+                viewModel.set("typeCode", result.data.TypeCode);
+                viewModel.set("typeName", result.data.TypeName);
+                viewModel.set("countyName", result.data.GrowerCountyName);
+                viewModel.set("stateName", result.data.GrowerStateName);
+                viewModel.set("acres", result.data.CalculatedAcres);
+                viewModel.set("share", result.data.FieldShare);
+                viewModel.set("fieldName", result.data.CommonFarmName);
+                viewModel.set("plantDate", result.data.CompletedDate);
+
+                if (result.data.CompletedDate != null && result.data.CompletedDate != "")
                     {
                         var str = result.data.CompletedDate;
                         var dateParts = str.split("-");
@@ -163,7 +180,6 @@
 
                     //   $("#plantingdate").attr('value', new Date('2013-08-11'));
                     //  $("#plantingdate").kendoDatePicker();
-
                 //    $("#CropDropDown").data('kendoDropDownList').value(viewModel.cropCode);
                 //    $("#Practice").data('kendoDropDownList').value(viewModel.practiceCode);
                 //    $("#Type").data('kendoDropDownList').value(viewModel.typeCode);
@@ -208,37 +224,34 @@
     }
 
     //handler for show event of the view
-   // function showDetail(e) {
-    function showDetail(e) {
+     function showDetail(e) {
         //    alert('made it to the showdetails');
         //    alert('GrowerPF value = ' + e.view.params.GrowerPartFieldId);
         //    alert('GrowerId value = ' + e.view.params.GrowerId);
         //hard coding today's date for selected date
        // viewModel.set('selectedDate', new Date().toLocaleDateString());
         //read the selected movie's details from the query string
-        viewModel.set("growerPartFieldId", e.view.params.GrowerPartFieldId);
-        viewModel.set("partFieldId", e.view.params.PartFieldId); //e.view.params.PartFieldId);
-        viewModel.set("growerId", e.view.params.GrowerId); //e.view.params.PartFieldId);
-
-
+    //    viewModel.set("growerPartFieldId", e.view.params.GrowerPartFieldId);
+    //    viewModel.set("partFieldId", e.view.params.PartFieldId); //e.view.params.PartFieldId);
+    //    viewModel.set("growerId", e.view.params.GrowerId); //e.view.params.PartFieldId);
+   	viewModel.set("selectedField", 
+		{ 
+		   userId: myUserId, 
+		   cropyear: myCropYear,
+	           growerId: e.view.params.GrowerId,
+		   partFieldId: e.view.params.PartFieldId,
+		   growerPartFieldId: e.view.params.GrowerPartFieldId
+		});
 
         ////hard coding today's date for selected date
         //viewModel.set('selectedDate', new Date().toLocaleDateString());
-
-        ////read the selected movie's details from the query string
-        //viewModel.set("selectedPartField", {
-        //    growerId: e.view.params.PartFieldId,
-        //    growerName: e.view.params.BusinessName,
-        //    cropYear: e.view.params.CropYear
-        //});
         //getFieldList(e.view.params.GrowerId);
-
 
         loadFieldData();
     }
 
-    function loadPracType() {
-    //    alert("Load type and Prac");
+    function loadPracType() 
+    {
         loadTypeData();
         loadPracticeData();
     }
