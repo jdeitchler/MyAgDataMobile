@@ -6,11 +6,11 @@
         typeList: {},
         selectedField: {
             	userId: "",    
-	 	cropyear: "",
-		growerId: "",
-		partFieldId: "",
-		growerPartFieldId: ""
-        },
+	 	        cropyear: "",
+		        growerId: "",
+		        partFieldId: "",
+		        growerPartFieldId: ""
+                    },
         growerId: 0,
         growerPartFieldId: 0,
         partFieldId: 0,
@@ -238,7 +238,7 @@
 		{ 
 		   userId: myUserId, 
 		   cropyear: myCropYear,
-	           growerId: e.view.params.GrowerId,
+	       growerId: e.view.params.GrowerId,
 		   partFieldId: e.view.params.PartFieldId,
 		   growerPartFieldId: e.view.params.GrowerPartFieldId
 		});

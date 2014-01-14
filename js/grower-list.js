@@ -2,16 +2,17 @@
 
     var viewModel = kendo.observable({
         growerList: {},
+        growerCount: 0,
         selectedUserId: 0
     });
 
    $.support.cors = true;
 
     function getGrowerList(listType) {
-//	alert(" userid = " + viewModel.selectedUserId + ", CropYear = " + myCropYear);
+  //      alert("Get GrowerList, userid = " + myUserId + ", CropYear = " + myCropYear);
         var growerListoptions = {
             url: MyAgDataMobile.configuration.getGrowerListUrl,
-            data: { userid: viewModel.selectedUserId, cropyear: myCropYear}, // 2013 },   //id=16&cropyear=2013  userid=16&cropyear=2013
+            data: { userid: myUserId, cropyear: myCropYear}, // 2013 },   //id=16&cropyear=2013  userid=16&cropyear=2013
             requestType: "GET",
             dataType: "JSON",
             callBack: callBack
@@ -22,7 +23,11 @@
     function callBack(result) {
         if (result.success === true) {
             viewModel.set("growerList", result.data);
-        }
+            if (result.data.length < 1) {
+                var agentName = MyAgDataMobile.userAccount.viewModel.firstName + " " + MyAgDataMobile.userAccount.viewModel.lastName;
+                $("#mt-main-grower-list-view").append("<h2 style='color : #FFFFFF;'><br/>No available growers for:  <br />&emsp;Agent: " + agentName + " <br />&emsp;Crop Year: " + myCropYear + " </h2>");
+            }
+          }
     }
 
     function listTypeSelected(e) {
@@ -77,6 +82,10 @@
     function showGrowerList(e) {
         viewModel.set("selectedUserId", e.view.params.userId);
         initList();
+
+
+
+
     }
 
     return {

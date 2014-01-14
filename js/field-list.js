@@ -4,6 +4,7 @@ MyAgDataMobile.fieldList = (function () {
     //ViewModel to be bound to the view
     var viewModel = kendo.observable({
         fieldList: {},
+        fieldCount: 0,
         selectedGrower: {
             userId: "",
             growerId: "",
@@ -59,6 +60,10 @@ MyAgDataMobile.fieldList = (function () {
                         });
                     }
 
+                    if (result.data.length < 1) {
+                        $("#partfield-list").append("<br /><h2 style='color : #FFFFFF;'><br/>No fields available for Grower " + viewModel.selectedGrower.growerId + "</h2>");
+                    }
+
                 } else {
                     //any error handling code
                 }
@@ -94,12 +99,6 @@ MyAgDataMobile.fieldList = (function () {
 
             $("#mt-main-layout-navbar").data("kendoMobileNavBar").title(titleString.toString());
         }
-        //  $("#nav-button").kendoMobileBackButton();
-        //        var navbar = $("#NavBarTitle").kendoMobileNavBar();
-        //      navbar = "test";
-
-        //   getFieldList("FieldName");
-     //   $("#km-group-title").css({ 'height': '2em' });
 
         if (buttongroup.selectedIndex == 1)
             getFieldList("County");
@@ -107,22 +106,15 @@ MyAgDataMobile.fieldList = (function () {
             getFieldList("State");
         else if (buttongroup.selectedIndex == 3)
             getFieldList("CropName");
-        else {
-        //    alert('made it to the show list');
+        else 
             getFieldList("FieldName");
-            //  $("#km-group-title").css({ 'height': '.2em' });
-        //    $("#partfield-list").kendoMobileListView({
-       //         style: "inset",
-        }
 
-        //   $(view.header[0]).find("km-view-title").html("CUSTOM TEXT HERE");
+        $("span.titleDetails").html(" " + myCropYear + " - " + mySeasonName + " " + myFarmOperationName + " ");
     }
 
     //retrieve list of theaters from the service
     function showGrowerList() {
         MyAgDataMobile.common.navigateToView('#Growerlist-view');
-
- 
     }
 
     function mobileListViewDataBindInitGrouped(e) {
@@ -146,14 +138,6 @@ MyAgDataMobile.fieldList = (function () {
                // skin: "flat"
             });
 
-        ////initialize app
-        //application = new kendo.mobile.Application(document.body,
-        // {
-        //     //   transition: 'slide',
-        //     loading: "<h3>Loading...</h3>"
-        // });
-
-        //Display loading image on every ajax call
         $(document).ajaxStart(function () {
 
             //application.showLoading calls the showLoading() method of the 

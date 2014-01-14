@@ -7,8 +7,9 @@
 
     return {            
         accountUrl: myAgDataServiceUrl + "Account/",
+        getDefaultsUrl: myAgDataServiceUrl + "reference/GetDefaultCropYearSeason/",
         getGrowerListUrl: myAgDataServiceUrl + "growers/getgrowers/",
-  	getFieldListUrl: myAgDataServiceUrl + "partfield/GetGrowerPartFieldShapeViewModels/",
+  	    getFieldListUrl: myAgDataServiceUrl + "partfield/GetGrowerPartFieldShapeViewModels/",
         getFieldDetailUrl: myAgDataServiceUrl + "partfield/GetGrowerPartFieldShapeViewModelDetails/",
         updateFieldDetailUrl: myAgDataServiceUrl + "partfield/UpdatePartField/",
         getCropListUrl: myAgDataServiceUrl + "reference/GetIceCommodities/",

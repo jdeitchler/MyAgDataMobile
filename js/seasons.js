@@ -1,4 +1,4 @@
-﻿MyAgDataMobile.preferences = (function () {
+﻿MyAgDataMobile.seasons = (function () {
 
     var viewModel = kendo.observable({
         cropyearList: [{ name: "2013", value: "2013" },
@@ -228,7 +228,7 @@
 
     //handler for show event of the view
    // function showDetail(e) {
-    function showPreferences(e) {
+    function showSeasons(e) {
     //    alert('made it to the showPreferences cropyear = ' + myCropYear);
         //    alert('GrowerPF value = ' + e.view.params.GrowerPartFieldId);
         //    alert('GrowerId value = ' + e.view.params.GrowerId);
@@ -265,7 +265,7 @@
     //}
 
     return {
-        showPreferences: showPreferences,
+        showSeasons: showSeasons,
    //     initialize3: initialize3,
     //    loadFieldData: loadFieldData,
     //    loadPracType: loadPracType,

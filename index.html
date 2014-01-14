@@ -21,7 +21,7 @@
     <script src="js/main-init.js"> </script> 
     <script src="js/grower-list.js"> </script> 
     <script src="js/field-detail.js"> </script> 
-    <script src="js/preferences.js"> </script>    
+    <script src="js/seasons.js"> </script>    
     <style>
         .no-backbutton .km-back {
             visibility: hidden;
@@ -72,12 +72,12 @@
         data-model="MyAgDataMobile.growerList.viewModel"
         data-layout="grower-layout" class="no-backbutton">
 
-        <!--Grower List -->
-        <ul id="mt-main-grower-list-view"  data-style="inset" data-role="listview"
-              data-template="grower_template"
-            data-filterable="{field:'BusinessName', operator:'startsWith'}"
-            data-bind="source: growerList">
-        </ul>
+        <!--Grower List -->       
+            <ul id="mt-main-grower-list-view"  data-style="inset" data-role="listview"
+                  data-template="grower_template"
+                data-filterable="{field:'BusinessName', operator:'startsWith'}"
+                data-bind="source: growerList">
+            </ul>
     </div>
     <!-- Grower layout -->
     <div data-role="layout" data-id="grower-layout">
@@ -102,10 +102,10 @@
             <li>Crop</li>
         </ul>
 
-         <!-- PartField View -->         
-         <ul id="partfield-list" data-role="listview" data-type="group" data-style="inset" data-endlessscroll="false"
-             data-template="fieldlist_template">
-         </ul>
+         <!-- PartField View -->       
+        <ul id="partfield-list" data-role="listview" data-type="group" data-style="inset" data-endlessscroll="false"
+            data-template="fieldlist_template">
+        </ul>
       <!--   data-endlessscroll="true" -->          
     </div>
 
@@ -170,42 +170,21 @@
         </form>
     </div>
 
-     <div data-role="view" id="history-view" data-title="History"  data-layout="myagdata-layout">
-        <div style="padding: 17px; color: white; font-size: large"><br /><br />
-            List of previous work items coming soon..<br /><br />
-             <div style="display:table-cell; vertical-align:middle; text-align:center">
-                <img src="images/ComingSoon3.jpg" /> 
-             </div>
-        </div>
-    </div>
-
-        <!-- User Account view -->
-    <div data-role="view" id="useracount-view" data-title="About" data-layout="myagdata-layout">
-        <div style="padding: 17px; color: white; font-size: large"><br /><br />
-            User Account items coming soon..<br /><br />
-             <div style="display:table-cell; vertical-align:middle; text-align:center">
-                <img src="images/ComingSoon3.jpg" /> 
-             </div>
-        </div>
-    </div>
-
-    <!-- Preferences view -->
-    <div data-role="view" data-title="Preference" 
-         data-show="MyAgDataMobile.preferences.showPreferences"  
-         data-model="MyAgDataMobile.preferences.viewModel"
-         id="preference-view" data-layout="myagdata-layout">
-	
-	<form>
+     <div data-role="view" id="season-view" data-title="Season" 
+          data-show="MyAgDataMobile.seasons.showSeasons"  
+          data-model="MyAgDataMobile.seasons.viewModel"  
+          data-layout="myagdata-layout">
+        <form>
         <div>
              <ul data-role="listview" id="listtestheader" >
-                    <li style="background-color: transparent; color: white; height: 4em; padding-top: 1.7em; font-size: large;">System Preferences:
+                    <li style="background-color: transparent; color: white; height: 4em; padding-top: 1.7em; font-size: large;">System Setups:
                     </li>
             </ul>
 
             <ul data-role="listview" id="Ul1" data-style="inset" onclick="">
                     <li>Crop Year:
                             <select id="CropYearDropdown" name="CropYear" 
-                                    data-role="dropdownlist" data-change="MyAgDataMobile.preferences.cropyearSelect" 
+                                    data-role="dropdownlist" data-change="MyAgDataMobile.seasons.cropyearSelect" 
                                     data-bind="source: cropyearList, value: cropyearId" 
                                     data-text-field="name" 
                                     data-value-field="value" 
@@ -214,7 +193,7 @@
                     </li>
                     <li>Season:
                             <select id="SeasonDropdown" name="Season" 
-                                    data-role="dropdownlist" data-change="MyAgDataMobile.preferences.seasonSelect" 
+                                    data-role="dropdownlist" data-change="MyAgDataMobile.seasons.seasonSelect" 
                                     data-bind="source: seasonList, value: seasonId" 
                                     data-text-field="name" 
                                     data-value-field="value" 
@@ -223,7 +202,7 @@
                     </li>
                     <li>Farm Operation:
                             <select id="FarmOperationDropdown" name="FarmOperation" 
-                                    data-role="dropdownlist" data-change="MyAgDataMobile.preferences.farmoperationSelect" 
+                                    data-role="dropdownlist" data-change="MyAgDataMobile.seasons.farmoperationSelect" 
                                     data-bind="source: farmoperationList, value: farmoperationId" 
                                     data-text-field="name" 
                                     data-value-field="value" 
@@ -233,6 +212,27 @@
             </ul>
         </div>
 	</form>
+    </div>
+
+        <!-- Field Maps view -->
+    <div data-role="view" id="maps-view" data-title="Maps" data-layout="myagdata-layout">
+        <div style="padding: 17px; color: white; font-size: large"><br /><br />
+            Field Maps coming soon..<br /><br />
+             <div style="display:table-cell; vertical-align:middle; text-align:center">
+                <img src="images/ComingSoon3.jpg" /> 
+             </div>
+        </div>
+    </div>
+
+    <!-- Preferences view -->
+    <div data-role="view" data-title="Preference" 
+         id="preference-view" data-layout="myagdata-layout">
+         <div style="padding: 17px; color: white; font-size: large"><br /><br />
+            List of preferences items coming soon..<br /><br />
+             <div style="display:table-cell; vertical-align:middle; text-align:center">
+                <img src="images/ComingSoon3.jpg" /> 
+             </div>
+        </div>
     </div>
 
     <!-- about view -->
@@ -261,10 +261,10 @@
                 <a href="#fieldlist-view" id="fieldlist-profile" data-icon="fieldList" >
                     <br />Field List
                 </a>
-                <a href="#useracount-view" id="map-button" data-icon="maps" >
+                <a href="#maps-view" id="map-button" data-icon="maps" >
                      <br />Map 
                 </a>
-                 <a href="#history-view" id="history-button"  data-icon="season" >                    
+                 <a href="#season-view" id="season-button"  data-icon="season" >                    
                         <br />Season
                 </a>
                 <a href="#preference-view" id="preferences-button" data-icon="preferences" >                    
@@ -900,6 +900,15 @@
         text-shadow: none;
         }
 
+        .km-tablet .km-ios *:not(.km-tabstrip):not(.km-buttongroup)>.km-button {
+        background: rgb(33,133,166);
+        margin-top: 1em;
+        }
+
+        .km-ios .km-popup .k-item, .km-ios .km-actionsheet>li>a {
+        text-shadow: none; 
+        }
+
 </style>
 
 
@@ -987,7 +996,7 @@
 
     <script>
         $(document).ready(function () {
-	    myUserId = "0";
+	        myUserId = "0";
             myCropYear = "2013";
             mySeasonValue = "21";
             mySeasonName = "Winter";
@@ -1004,7 +1013,7 @@
                 $('#fieldlist-profile').css({ background: "transparent" });
                 $('#preferences-button').css({ background: "transparent" });
                 $('#map-button').css({ background: "transparent" });
-                $('#history-button').css({ background: "transparent" });
+                $('#season-button').css({ background: "transparent" });
                 $('#more-button').css({ background: "transparent" });
             }
 
