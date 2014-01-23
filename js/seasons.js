@@ -26,7 +26,7 @@
      //   cropName: "crop name",
  
         updateClick: function (e) {
-            alert('update Field Succeeded -fieldid = '); // + this.selectedField.partFieldId);
+         //   alert('update Field Succeeded -fieldid = '); // + this.selectedField.partFieldId);
             //    viewModel.set("selectedField", {
             //            userId: 16,
             //            partFieldId: viewModel.get("partFieldId"),

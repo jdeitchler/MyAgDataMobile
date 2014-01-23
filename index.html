@@ -84,14 +84,14 @@
         <header data-role="header">
             <div data-role="navbar" id="Div1">
                 <span data-role="view-title">Growers</span>
-                <a data-align="left" class="mt-main-layout-btn-logoff"
+                <a data-align="right" class="mt-main-layout-btn-logoff"
                     data-click="MyAgDataMobile.userAccount.viewModel.logOff" data-role="button">Log Off</a> 
             </div>
         </header>
     </div>
 
     <!-- PartField View -->
-    <div data-role="view" id="fieldlist-view" data-title="PartField" 
+    <div data-role="view" id="fieldlist-view" 
         data-model="MyAgDataMobile.fieldList.viewModel" data-group="GroupBy"
          data-show="MyAgDataMobile.fieldList.show"  data-layout="myagdata-layout">
         <!-- PartField Button Group -->
@@ -110,7 +110,7 @@
     </div>
 
     <!-- PartField Details View -->
-    <div data-role="view" data-title="FieldDetail" data-init="detailInit"
+    <div data-role="view" data-title="Field Details" data-init="detailInit"
          data-show="MyAgDataMobile.fieldDetail.showDetail"  
          data-model="MyAgDataMobile.fieldDetail.viewModel"
          id="fieldDetails-view">
@@ -123,54 +123,49 @@
         </header>
         <form>
             <ul data-role="listview" id="edit-listview" data-style="inset" onclick="">
-                <li>
-                    <label>Field ID:
-                        <input type="text" data-bind="value: partFieldId"/>
-                    </label>
+                <li>Field Name:                      
+                        <input type="text" id="Text2" data-bind="value: fieldName" />
                 </li>
-                    <li>Crop Name:
-                            <select id="CropDropDown" name="Crop" 
-                                    data-role="dropdownlist" data-change="cropSelect" 
-                                    data-bind="source: cropList, value: cropCode" 
-                                    data-text-field="Commodity_Name" data-value-field="Id" 
-                                    required data-required-msg="Crop is required">
-                            </select>
-                    </li>
-                    <li>Practice:  
-                        <select id="Practice" name="Practice" 
-                                data-role="dropdownlist" 
-                                data-bind="source: practiceList, value: practiceCode" 
-                                data-text-field="Practice_Abbreviation" data-value-field="Practice_Code" 
-                                required data-required-msg="Practice is required">
+                <li>Crop Name:
+                        <select id="CropDropDown" name="Crop" 
+                                data-role="dropdownlist" data-change="cropSelect" 
+                                data-bind="source: cropList, value: cropCode" 
+                                data-text-field="Commodity_Name" data-value-field="Id" 
+                                required data-required-msg="Crop is required">
                         </select>
-                    </li>
-                    <li>Type:  
-                        <select id="Type" name="Type" 
-                                data-role="dropdownlist" 
-                                data-bind="source: typeList, value: typeCode" 
-                                data-text-field="Full_Type_Name" data-value-field="Type_Code" 
-                                required data-required-msg="Type is required">
-                        </select>
-                    </li>
-                    <li>Planting Date:
-                            <input id="plantingdate" style="width:150px;" />
-                    </li>
-                    <li><span style="text-align:right">Acres:</span>                      
-                            <input type="text" id="Text3" data-bind="value: acres" />
-                    </li>
-                     <li>
-                        <label>Share
-                            <input type="number" value="0" data-bind="value: share"/>
-                        </label>
-                    </li>
-                    <li>Field Name:                      
-                            <input type="text" id="Text2" data-bind="value: fieldName" />
-                    </li>
+                </li>
+                <li>Practice:  
+                    <select id="Practice" name="Practice" 
+                            data-role="dropdownlist" 
+                            data-bind="source: practiceList, value: practiceCode" 
+                            data-text-field="Practice_Abbreviation" data-value-field="Practice_Code" 
+                            required data-required-msg="Practice is required">
+                    </select>
+                </li>
+                <li>Type:  
+                    <select id="Type" name="Type" 
+                            data-role="dropdownlist" 
+                            data-bind="source: typeList, value: typeCode" 
+                            data-text-field="Full_Type_Name" data-value-field="Type_Code" 
+                            required data-required-msg="Type is required">
+                    </select>
+                </li>
+                <li>Planting Date:
+                        <input id="plantingdate" style="width:150px;" />
+                </li>
+                <li>
+                    <span style="text-align:right">Planted Acres:</span>                      
+                    <input type="text" id="Acres" data-bind="value: acres" />
+                </li>
+                 <li>
+                     <span style="text-align:right">Percent Share:</span>  
+                     <input type="text" id="Share"  data-bind="value: share"/>
+                </li>
             </ul>
         </form>
     </div>
 
-     <div data-role="view" id="season-view" data-title="Season" 
+     <div data-role="view" id="season-view" 
           data-show="MyAgDataMobile.seasons.showSeasons"  
           data-model="MyAgDataMobile.seasons.viewModel"  
           data-layout="myagdata-layout">
@@ -215,7 +210,7 @@
     </div>
 
         <!-- Field Maps view -->
-    <div data-role="view" id="maps-view" data-title="Maps" data-layout="myagdata-layout">
+    <div data-role="view" id="maps-view" data-layout="myagdata-layout">
         <div style="padding: 17px; color: white; font-size: large"><br /><br />
             Field Maps coming soon..<br /><br />
              <div style="display:table-cell; vertical-align:middle; text-align:center">
@@ -225,7 +220,7 @@
     </div>
 
     <!-- Preferences view -->
-    <div data-role="view" data-title="Preference" 
+    <div data-role="view"
          id="preference-view" data-layout="myagdata-layout">
          <div style="padding: 17px; color: white; font-size: large"><br /><br />
             List of preferences items coming soon..<br /><br />
@@ -236,7 +231,7 @@
     </div>
 
     <!-- about view -->
-    <div data-role="view" id="more-view" data-title="More" data-layout="myagdata-layout">
+    <div data-role="view" id="more-view" data-layout="myagdata-layout">
         <div style="padding: 17px; color: white; font-size: large"><br /><br />
             Future Ag Mobile Functions coming soon..<br /><br />
              <div style="display:table-cell; vertical-align:middle; text-align:center">
@@ -249,11 +244,15 @@
     <div data-role="layout" data-id="myagdata-layout">
         <header data-role="header">
             <div data-role="navbar" id="mt-main-layout-navbar">
-                <a class="nav-button" id="backPartField" data-align="left" data-icon="myBackIcon" data-role="backbutton"></a>
+           <!--     <a class="nav-button" id="backPartField" data-align="left" data-icon="myBackIcon" data-role="backbutton"></a> -->
+                <a data-align="left" class="mt-main-layout-btn-growers"
+                    data-click="MyAgDataMobile.common.growerList" data-role="button" 
+                    style="display: inline-block;margin-top: .7em; padding-top: .4em;">Growers</a> 
                 <span data-role="view-title" class="NavBarTitle">PartField</span><br />
                 <span class="titleDetails" id="titleDetails">2014 - Spring Plant</span>
-          <!--      <a data-align="left" style="display: none" class="mt-main-layout-btn-logoff"
-                    data-click="MyAgDataMobile.userAccount.viewModel.logOff" data-role="button">Log Off</a> -->
+                <a data-align="right" class="mt-main-layout-btn-logoff"
+                    data-click="MyAgDataMobile.userAccount.viewModel.logOff" data-role="button" 
+                    style="display: inline-block; margin-top: .7em; padding-top: .4em; margin-right: .3em;">Log Off</a> 
             </div>
         </header>
         <footer data-role="footer" id="custom-footer">
@@ -426,7 +425,7 @@
     {
      /*  content: "\e0e5"; */
      content: "";
-     background: url("images/iconbackarrow.png");
+     background: url("images/IconBackArrow.png");
    /*  background-size: 100%; */
         /* Firefox 
         -moz-transform:rotate(180deg); */
@@ -440,7 +439,7 @@
     /*    margin-left: 5px;
         margin-top: 8px;   */
         display: block; 
-                height: 5px;
+        height: 5px;
         width: 5px;
     }
 
@@ -790,7 +789,7 @@
         .km-myBackIcon:after, .km-myBackIcon:before {
             content: "";
             position: absolute;
-            background-image: url("images/iconbackarrow.png");
+            background-image: url("images/IconBackArrow.png");
             background-size: 100%;
             background-repeat: no-repeat;
       /*      background: #2185a6; */
@@ -799,12 +798,20 @@
             margin-left: -8px;
             }
 
-        .km-ios .mt-main-layout-btn-logoff {
+        .km-ios .mt-main-layout-btn-growers {
             width: 50px;
-            height: 1.3em;
+            line-height: 1.3em;
             font-size: small;
             margin-top: .8em;
             padding-top: .1em;
+            }
+
+        .km-ios .mt-main-layout-btn-logoff {
+            width: 50px;
+            line-height: 1.3em;
+            font-size: small;
+            margin-top: .7em;
+            padding-top: .4em;
             }
 
         .km-ios .km-listinset, 
@@ -973,7 +980,7 @@
         <div id="content">
           <div id="left">
                <span class="mt-listitem-title">#:CommonFarmName# </span><br>
-               <span class="mt-highlight-label" style="width:55px; white-space:nowrap; overflow:hidden; text-overflow: ellipsis;" >#:CalculatedAcres# Planted of #:ReportedAcres# Acres</span> 
+               <span class="mt-highlight-label" style="width:55px; white-space:nowrap; overflow:hidden; text-overflow: ellipsis;" >#:ReportedAcres# Planted of #:CalculatedAcres# Acres</span> 
          </div>
           <div id="right">
              <img src="images/IconArrowWhite.png" alt="" class="inline" style="max-width: 20px" /><img src="images/IconArrowGray.png" alt="" class="inline" style="max-width: 20px" /></a>
@@ -983,7 +990,7 @@
         <div id="content">
           <div id="left">
                 <span class="mt-listitem-title">#:CommonFarmName# </span><br> 
-                <span class="mt-highlight-label" style="width:55px; white-space:nowrap; overflow:hidden; text-overflow: ellipsis;" >#:CalculatedAcres# Planted of #:ReportedAcres# Acres</span>
+                <span class="mt-highlight-label" style="width:55px; white-space:nowrap; overflow:hidden; text-overflow: ellipsis;" >#:ReportedAcres# Planted of #:CalculatedAcres# Acres</span>
           </div>
           <div id="right">
              <img src="images/IconLocked.png" alt="" class="inline" style="max-width: 20px" /><img src="images/IconArrowGray.png" alt="" class="inline" style="max-width: 20px" />
@@ -1008,7 +1015,7 @@
             $("#datepicker1").kendoDatePicker();
 
             if (kendo.support.mobileOS.tablet) {
-                $('#custom-footer').css({ height: "7%"} );
+                $('#custom-footer').css({ height: "8%"} );
                 $('#custom-tabstrip').css({ height: "100%"});
                 $('#fieldlist-profile').css({ background: "transparent" });
                 $('#preferences-button').css({ background: "transparent" });

@@ -80,7 +80,7 @@ MyAgDataMobile.fieldList = (function () {
 
     //handler for show event of the view
     function show(e) {
-      //  alert("Field List Show Season Value = " + mySeasonValue);
+     //    alert("Field List Show UserId Value = " + e.view.params.UserId);
      //   alert('made it to the Initialize Field list');
         var buttongroup = $("#fieldlistButtonGroup").data("kendoMobileButtonGroup");
 
@@ -96,6 +96,8 @@ MyAgDataMobile.fieldList = (function () {
             });
 
             var titleString = viewModel.selectedGrower.growerName; // + '\r\n' + '2014 - Spring Plant';
+            
+            myUserId = e.view.params.UserId;
 
             $("#mt-main-layout-navbar").data("kendoMobileNavBar").title(titleString.toString());
         }

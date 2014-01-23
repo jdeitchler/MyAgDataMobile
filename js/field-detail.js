@@ -25,24 +25,42 @@
         acres: 0,
         share: 0,
         fieldName: "Field Name",
-        plantDate: "2013-04-01",
+        plantDate:  new Date(2014,1,1),
         updateClick: function (e) {
-            //alert('update Field Succeeded -fieldid = ' + this.selectedField.partFieldId);
+            // alert('update Field Started - UserId = ' + myUserId);
             //    viewModel.set("selectedField", {
             //            userId: viewModel.selectedField.userId,
             //            partFieldId: viewModel.get("partFieldId"),
             //            typeCode: viewModel.get("typeCode"),
             //            practiceCode: viewModel.get("practiceCode")
             //            });
+
+            var pYear = viewModel.get("plantDate").getFullYear();
+        //    alert('Year = ' + pYear);
+            var pMonth = viewModel.get("plantDate").getMonth() + 1;
+        //    alert('Month = ' + pMonth);
+            var pDay = viewModel.get("plantDate").getDate();
+       //     alert('Day = ' + pDay);
+            var pDate = pMonth + "/" + pDay + "/" + pYear;
+       //     alert('Date = ' + pDate);
+       //     alert("the newDate1 = " + viewModel.get("plantDate"));
+       //     alert("the newDate2 = " + pDate);
+
                 var updateOptions = {
                     url: MyAgDataMobile.configuration.updateFieldDetailUrl,
                     requestType: "GET",
                     dataType: "JSON",
-                    data: { userId: viewModel.selectedField.userId, 
+                    data: {
+                        userId: myUserId,
+                        growerId: viewModel.selectedField.growerId,
                         partFieldId: viewModel.get("partFieldId"),
                         cropId: viewModel.get("cropCode"), 
                         typeCode: viewModel.get("typeCode"), 
                         practiceCode: viewModel.get("practiceCode"),
+                        acres: viewModel.get("acres"),
+                        share: viewModel.get("share"),
+                        plantDate: pDate,
+                        farmName: viewModel.get("fieldName")
                           },
                     callBack: function (result) {
                         //if you are using PhoneGap to deploy as an app, 
@@ -160,11 +178,11 @@
                 viewModel.set("typeName", result.data.TypeName);
                 viewModel.set("countyName", result.data.GrowerCountyName);
                 viewModel.set("stateName", result.data.GrowerStateName);
-                viewModel.set("acres", result.data.CalculatedAcres);
+                viewModel.set("acres", result.data.ReportedAcres);
                 viewModel.set("share", result.data.FieldShare);
                 viewModel.set("fieldName", result.data.CommonFarmName);
-                viewModel.set("plantDate", result.data.CompletedDate);
-
+             //   viewModel.set("plantDate",  result.data.CompletedDate);
+             //   alert("Date coming back = " + result.data.CompletedDate);
                 if (result.data.CompletedDate != null && result.data.CompletedDate != "")
                     {
                         var str = result.data.CompletedDate;
@@ -173,8 +191,17 @@
                         var intMonth = parseInt(dateParts[1], 10) - 1;
                         var intDay = parseInt(dateParts[2], 10);
 
-                        $("#plantingdate").kendoDatePicker({
-                            value: new Date(intYear, intMonth, intDay)
+                       viewModel.set("plantDate",  new Date(intYear, intMonth, intDay));
+
+                       $("#plantingdate").kendoDatePicker({
+                           value: new Date(intYear, intMonth, intDay),
+                           change: function () {
+                               var value = this.value();
+                               viewModel.set("plantDate", value);
+
+                         //      alert("Select Date = " + value); //value is the selected date in the datepicker
+                           }
+
                         });
                     }
 

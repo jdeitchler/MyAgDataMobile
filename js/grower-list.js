@@ -82,10 +82,6 @@
     function showGrowerList(e) {
         viewModel.set("selectedUserId", e.view.params.userId);
         initList();
-
-
-
-
     }
 
     return {
