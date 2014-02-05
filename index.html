@@ -123,8 +123,8 @@
         </header>
         <form>
             <ul data-role="listview" id="edit-listview" data-style="inset" onclick="">
-                <li>Field Name:                      
-                        <input type="text" id="Text2" data-bind="value: fieldName" />
+                <li>Grower Field Name:                      
+                      <input type="text" id="Text2" disabled="disabled" data-bind="value: fieldName"  />
                 </li>
                 <li>Crop Name:
                         <select id="CropDropDown" name="Crop" 
@@ -154,12 +154,20 @@
                         <input id="plantingdate" style="width:150px;" />
                 </li>
                 <li>
-                    <span style="text-align:right">Planted Acres:</span>                      
-                    <input type="text" id="Acres" data-bind="value: acres" />
+                    <span style="text-align:right">Field Acres:</span>                      
+                 <!--   <input type="text" id="Acres" data-bind="value: acres" />  -->
+                    <input id="FAcres" data-bind="value: fieldAcres" /> 
+                </li>
+                <li>
+                    <span style="text-align:right; width:50%">Planted Acres:</span>                      
+                 <!--   <input type="text" id="Acres" data-bind="value: acres" />  -->
+                    <input id="PAcres" data-bind="value: plantedAcres" /> 
                 </li>
                  <li>
                      <span style="text-align:right">Percent Share:</span>  
-                     <input type="text" id="Share"  data-bind="value: share"/>
+                  <!--   <input type="text" id="Share"  data-bind="value: share"/> -->
+                     <input id="Share" data-bind="value: share" />
+
                 </li>
             </ul>
         </form>
@@ -171,10 +179,7 @@
           data-layout="myagdata-layout">
         <form>
         <div>
-             <ul data-role="listview" id="listtestheader" >
-                    <li style="background-color: transparent; color: white; height: 4em; padding-top: 1.7em; font-size: large;">System Setups:
-                    </li>
-            </ul>
+        <br />
 
             <ul data-role="listview" id="Ul1" data-style="inset" onclick="">
                     <li>Crop Year:
@@ -916,6 +921,17 @@
         text-shadow: none; 
         }
 
+        .km-scrollview > * > *  {
+            white-space: nowrap;
+        }
+
+        span.k-numerictextbox {
+        width: 8em;
+        }
+
+        span.k-datepicker {
+        width: 8em;
+        }
 </style>
 
 

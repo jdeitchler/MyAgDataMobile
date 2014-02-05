@@ -14,6 +14,7 @@
         growerId: 0,
         growerPartFieldId: 0,
         partFieldId: 0,
+        partFieldShapeId: 0,
         cropCode: 91,
         cropName: "crop name",
         practiceCode: "002",
@@ -22,7 +23,8 @@
         typeName: "Spring Wheat",
         countyName: "County name",
         stateName: "State name",
-        acres: 0,
+        fieldAcres: 0,
+        plantedAcres: 0,
         share: 0,
         fieldName: "Field Name",
         plantDate:  new Date(2014,1,1),
@@ -54,36 +56,29 @@
                         userId: myUserId,
                         growerId: viewModel.selectedField.growerId,
                         partFieldId: viewModel.get("partFieldId"),
+                        partFieldShapeId: viewModel.get("partFieldShapeId"),
                         cropId: viewModel.get("cropCode"), 
                         typeCode: viewModel.get("typeCode"), 
                         practiceCode: viewModel.get("practiceCode"),
-                        acres: viewModel.get("acres"),
+                        fieldAcres: viewModel.get("fieldAcres"),
+                        plantedAcres: viewModel.get("plantedAcres"),
                         share: viewModel.get("share"),
-                        plantDate: pDate,
-                        farmName: viewModel.get("fieldName")
+                        plantDate: pDate
                           },
                     callBack: function (result) {
                         //if you are using PhoneGap to deploy as an app, 
                         //you should use the notification api
                         //navigate to User Account screen.
-                        //  view.loader.hide();
-                      
-                        // window.kendoMobileApplication.navigate("#:back");
-                      
-                        //   window.kendoMobileApplication.navigate("#:back");
-
 
                         if (result.success)
                             {
-                  //          MyAgDataMobile.common.navigateToView('#Fieldlist-view'); //?GrowerId=' + viewModel.get("growerId"));
-                            // window.kendoMobileApplication.navigate("#fieldlist-view");
-                            alert('Success');
+                            //   alert('Growerid = ' + viewModel.selectedField.growerId);
+                            //   window.kendoMobileApplication.navigate("#:back");
+                            MyAgDataMobile.common.navigateToView('#fieldlist-view'); //?GrowerId=' + viewModel.get("growerId"));
+                        //    alert('Success');
                             }
                         else {
                             alert('Error on PartField Update...');
-                       //     alert('results.success = ' + result.success);
-                       //     alert('results = ' + result.success);
-                       //     MyAgDataMobile.common.navigateToView("\\#fieldlist-view?GrowerId=" + viewModel.growerId);
                         }
                     }
                 };
@@ -161,6 +156,7 @@
         //    alert('Success on Field Detail Callback');
             if (result.success === true) {
                 viewModel.set("partFieldId", result.data.PartFieldId);
+                viewModel.set("partFieldShapeId", result.data.PartFieldShapeId);
                 viewModel.set("cropCode", result.data.CommodityCodeId);
                 viewModel.set("cropName", result.data.CommodityName);
                 if (result.data.PracticeCode == null)
@@ -178,7 +174,8 @@
                 viewModel.set("typeName", result.data.TypeName);
                 viewModel.set("countyName", result.data.GrowerCountyName);
                 viewModel.set("stateName", result.data.GrowerStateName);
-                viewModel.set("acres", result.data.ReportedAcres);
+                viewModel.set("fieldAcres", result.data.CalculatedAcres);
+                viewModel.set("plantedAcres", result.data.ReportedAcres);
                 viewModel.set("share", result.data.FieldShare);
                 viewModel.set("fieldName", result.data.CommonFarmName);
              //   viewModel.set("plantDate",  result.data.CompletedDate);
@@ -213,7 +210,36 @@
 
                     //navigate to User Account Growers.
                 //MyAgDataMobile.common.navigateToView("GrowersList.html");
-          //          alert("call load Crop");
+                //          alert("call load Crop");
+
+                    // create Percentage NumericTextBox from input HTML element
+              $("#Share").kendoNumericTextBox({
+                    format: "p0",
+                //    value: result.data.FieldShare,
+                        min: 0,
+                        max: 1.00,
+                        step: 0.01,
+                        decimals: 3,
+                        spinners: false
+              });
+
+              $("#FAcres").kendoNumericTextBox({
+                  format: "#.0 acres",
+                  decimals: 1,
+                  min: 0,
+                  max: 100000,
+                  spinners: false
+              });
+
+              $("#PAcres").kendoNumericTextBox({
+                  format: "#.0 acres",
+                  decimals: 1,
+                  min: 0,
+                  max: 100000,
+                  spinners: false
+              });
+
+
                     loadCropData();
                 }
             else {
