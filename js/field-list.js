@@ -61,7 +61,7 @@ MyAgDataMobile.fieldList = (function () {
                     }
 
                     if (result.data.length < 1) {
-                        $("#partfield-list").append("<br /><h2 style='color : #FFFFFF;'><br/>No fields available for Grower " + viewModel.selectedGrower.growerId + "</h2>");
+                        $("#partfield-list").append("<br /><h2 style='color : #FFFFFF;'><br/>This grower does not have any fields for the selected Crop Year, Season and Farming Operation. </h2>");
                     }
 
                 } else {

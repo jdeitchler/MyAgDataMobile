@@ -179,14 +179,25 @@
                 viewModel.set("share", result.data.FieldShare);
                 viewModel.set("fieldName", result.data.CommonFarmName);
              //   viewModel.set("plantDate",  result.data.CompletedDate);
-             //   alert("Date coming back = " + result.data.CompletedDate);
-                if (result.data.CompletedDate != null && result.data.CompletedDate != "")
-                    {
-                        var str = result.data.CompletedDate;
-                        var dateParts = str.split("-");
-                        var intYear = parseInt(dateParts[0], 10);
-                        var intMonth = parseInt(dateParts[1], 10) - 1;
-                        var intDay = parseInt(dateParts[2], 10);
+                //   alert("Date coming back = " + result.data.CompletedDate);
+                
+                var intDay = 0;
+                var intMonth = 0;
+                var intYear = 0
+
+                if (result.data.CompletedDate == null || result.data.CompletedDate == "") {
+                    var currentDate = new Date();
+                    intDay = currentDate.getDate();
+                    intMonth = currentDate.getMonth();
+                    intYear = currentDate.getFullYear();
+                }
+                else {
+                    var str = result.data.CompletedDate;
+                    var dateParts = str.split("-");
+                    intYear = parseInt(dateParts[0], 10);
+                    intMonth = parseInt(dateParts[1], 10) - 1;
+                    intDay = parseInt(dateParts[2], 10);
+                }
 
                        viewModel.set("plantDate",  new Date(intYear, intMonth, intDay));
 
@@ -196,11 +207,11 @@
                                var value = this.value();
                                viewModel.set("plantDate", value);
 
-                         //      alert("Select Date = " + value); //value is the selected date in the datepicker
+                               //      alert("Select Date = " + value); //value is the selected date in the datepicker
                            }
 
-                        });
-                    }
+                       });
+                   
 
                     //   $("#plantingdate").attr('value', new Date('2013-08-11'));
                     //  $("#plantingdate").kendoDatePicker();
@@ -224,21 +235,20 @@
               });
 
               $("#FAcres").kendoNumericTextBox({
-                  format: "#.0 acres",
-                  decimals: 1,
+                  format: "#.00 acres",
+                  decimals: 2,
                   min: 0,
                   max: 100000,
                   spinners: false
               });
 
               $("#PAcres").kendoNumericTextBox({
-                  format: "#.0 acres",
-                  decimals: 1,
+                  format: "#.00 acres",
+                  decimals: 2,
                   min: 0,
                   max: 100000,
                   spinners: false
               });
-
 
                     loadCropData();
                 }
