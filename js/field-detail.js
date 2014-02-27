@@ -227,6 +227,7 @@
               $("#Share").kendoNumericTextBox({
                     format: "p0",
                 //    value: result.data.FieldShare,
+                        type: Number,
                         min: 0,
                         max: 1.00,
                         step: 0.01,
@@ -244,10 +245,21 @@
 
               $("#PAcres").kendoNumericTextBox({
                   format: "#.00 acres",
+                  type: Number,
                   decimals: 2,
                   min: 0,
                   max: 100000,
                   spinners: false
+              });
+
+              $("#PAcres").on('focus', function () {
+                  var input = $(this);
+                  setTimeout(function () { input.select(); });
+              });
+
+              $("#Share").on('focus', function () {
+                  var input = $(this);
+                  setTimeout(function () { input.select(); });
               });
 
                     loadCropData();

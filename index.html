@@ -156,12 +156,12 @@
                 <li>
                     <span style="text-align:right">Field Acres:</span>                      
                  <!--   <input type="text" id="Acres" data-bind="value: acres" />  -->
-                    <input id="FAcres" data-bind="value: fieldAcres" /> 
+                    <input id="FAcres" disabled="disabled" data-bind="value: fieldAcres" /> 
                 </li>
                 <li>
                     <span style="text-align:right; width:50%">Planted Acres:</span>                      
                  <!--   <input type="text" id="Acres" data-bind="value: acres" />  -->
-                    <input id="PAcres" data-bind="value: plantedAcres" /> 
+                    <input id="PAcres" type="number" min="0" data-bind="value: plantedAcres" /> 
                 </li>
                  <li>
                      <span style="text-align:right">Percent Share:</span>  
