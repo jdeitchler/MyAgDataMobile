@@ -193,10 +193,19 @@
                 }
                 else {
                     var str = result.data.CompletedDate;
-                    var dateParts = str.split("-");
-                    intYear = parseInt(dateParts[0], 10);
-                    intMonth = parseInt(dateParts[1], 10) - 1;
-                    intDay = parseInt(dateParts[2], 10);
+                    var res = str.substring(0, 10);
+                    if (res == "1900-01-01") {
+                        var today = new Date();
+                        intYear = today.getFullYear();
+                        intMonth = today.getMonth();
+                        intDay = today.getDate();
+                    }
+                    else {
+                        var dateParts = str.split("-");
+                        intYear = parseInt(dateParts[0], 10);
+                        intMonth = parseInt(dateParts[1], 10) - 1;
+                        intDay = parseInt(dateParts[2], 10);
+                    }
                 }
 
                        viewModel.set("plantDate",  new Date(intYear, intMonth, intDay));
@@ -205,6 +214,7 @@
                            value: new Date(intYear, intMonth, intDay),
                            change: function () {
                                var value = this.value();
+
                                viewModel.set("plantDate", value);
 
                                //      alert("Select Date = " + value); //value is the selected date in the datepicker
@@ -251,6 +261,7 @@
               $("#PAcres").kendoNumericTextBox({
                   format: "#.00 acres",
                   type: Number,
+                  pattern: [0-23455],
                   decimals: 2,
                   min: 0,
                   max: 100000,

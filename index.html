@@ -151,7 +151,7 @@
                     </select>
                 </li>
                 <li>Planting Date:
-                        <input id="plantingdate" style="width:150px;" />
+                        <input id="plantingdate" style="width: 120px;" />
                 </li>
                 <li>
                     <span style="text-align:right">Field Acres:</span>                      
@@ -161,7 +161,7 @@
                 <li>
                     <span style="text-align:right; width:50%">Planted Acres:</span>                      
                  <!--   <input type="text" id="Acres" data-bind="value: acres" />  -->
-                    <input id="PAcres" type="number" min="0" data-bind="value: plantedAcres" /> 
+                    <input id="PAcres" type="number" min="0" pattern="[0-5000]" data-bind="value: plantedAcres" /> 
                 </li>
                  <li>
                      <span style="text-align:right">Percent Share:</span>  
@@ -929,6 +929,7 @@
         width: 8em;
         }
 
+
 </style>
 
 
@@ -1024,9 +1025,7 @@
             myFarmOperationName = "Plant";
             $("span.titleDetails").html(" " + myCropYear + " - " + mySeasonName + " " + myFarmOperationName + " ");
 
-            // create DatePicker from input HTML element
-            $("#datepicker1").kendoDatePicker();
-
+            
             if (kendo.support.mobileOS.tablet) {
                 $('#custom-footer').css({ height: "8%"} );
                 $('#custom-tabstrip').css({ height: "100%"});
