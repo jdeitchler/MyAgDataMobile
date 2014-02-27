@@ -15,7 +15,7 @@
 		userBookingHistory: [],
 		userLogin: function () {
 		      $.support.cors = true;
-		    //	alert("login with userid = " + this.userName + ", password = " + this.password);
+		   	alert("login with userid = " + this.userName + ", password = " + this.password);
 			var loginOptions = {
 				url: MyAgDataMobile.configuration.accountUrl,
 				requestType: "GET",
@@ -23,13 +23,14 @@
 				httpHeader: "Authorization", //for HTTP Basic authentication
 				//btoa function will convert the text to base 64 encoding
 				headerValue: "Basic " + btoa(this.userName + ":" + this.password),
-				callBack: this.fnLoginCallBack
+				callBack: this.fnLoginCallBack,
 			};
 			MyAgDataMobile.dataAccess.callService(loginOptions);
 		},
 		//method for user login
 		fnLoginCallBack: function (result) {
-			if (result.success === true && result.data != null) {
+		    alert("Login return");
+		    if (result.success === true && result.data != null) {
 			    viewModel.set("userId", result.data.UserId);
 			    viewModel.set("firstName", result.data.FirstName);
 			    viewModel.set("lastName", result.data.LastName);
