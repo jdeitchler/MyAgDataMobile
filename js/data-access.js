@@ -12,12 +12,18 @@
 
             //Add HTTP headers if configured
             beforeSend: function (xhr) {
+                alert("before send.");
                 if (typeof options.httpHeader !== 'undefined'
-                    && typeof options.headerValue !== 'undefined')
+                    && typeof options.headerValue !== 'undefined') {
+                    alert("before send -in");
                     xhr.setRequestHeader(options.httpHeader, options.headerValue);
+                    alert("after send -in");
+                }
+                alert("after send");
             },
             //on successful ajax call back
             success: function (resultData, status, xhr) {
+                alert("Success");
                 var result = {
                     data: resultData,
                     success: true
@@ -26,6 +32,7 @@
             },
             //Callback function incase of an error
             error: function (xhr, status, errorThrown) {
+                alert("In Error");
                 switch(xhr.status){
                     case '401' :
                         alert('401 Unauthorized access detected.Please check the credentials you entered. ' + errorThrown);

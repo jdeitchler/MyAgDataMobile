@@ -16,7 +16,8 @@
 		userLogin: function () {
 		      $.support.cors = true;
 		   	alert("login with userid = " + this.userName + ", password = " + this.password);
-			var loginOptions = {
+
+		   	var loginOptions = {
 				url: MyAgDataMobile.configuration.accountUrl,
 				requestType: "GET",
 				dataType: "JSON",
@@ -25,11 +26,12 @@
 				headerValue: "Basic " + btoa(this.userName + ":" + this.password),
 				callBack: this.fnLoginCallBack,
 			};
-			MyAgDataMobile.dataAccess.callService(loginOptions);
+
+		   	MyAgDataMobile.dataAccess.callService(loginOptions);
 		},
 		//method for user login
 		fnLoginCallBack: function (result) {
-		    alert("Login return");
+		    alert("Login return = " + result.success);
 		    if (result.success === true && result.data != null) {
 			    viewModel.set("userId", result.data.UserId);
 			    viewModel.set("firstName", result.data.FirstName);
