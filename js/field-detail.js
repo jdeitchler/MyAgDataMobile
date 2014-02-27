@@ -233,6 +233,11 @@
                         step: 0.01,
                         decimals: 3,
                         spinners: false
+              }).focus(function () {
+                  var input = $(this);
+                  setTimeout(function () {
+                      input.select();
+                  });
               });
 
               $("#FAcres").kendoNumericTextBox({
@@ -250,17 +255,29 @@
                   min: 0,
                   max: 100000,
                   spinners: false
+              }).focus(function () {
+                  var input = $(this);
+                  setTimeout(function () {
+                      input.select();
+                  });
               });
 
-              $("#PAcres").on('focus', function () {
-                  var input = $(this);
-                  setTimeout(function () { input.select(); });
-              });
 
-              $("#Share").on('focus', function () {
-                  var input = $(this);
-                  setTimeout(function () { input.select(); });
-              });
+
+    //          var input = e.container.find("input");
+    //          setTimeout(function () {
+    //              input.select();
+    //          }, 25);
+
+    //        $("#PAcres").on('focus', function () {
+    //              var input = $(this);
+    //              setTimeout(function () { input.select(); });
+    //          });
+
+//              $("#Share").on('focus', function () {
+  //                var input = $(this);
+    //              setTimeout(function () { input.select(); });
+      //        });
 
                     loadCropData();
                 }

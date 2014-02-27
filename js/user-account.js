@@ -15,7 +15,7 @@
 		userBookingHistory: [],
 		userLogin: function () {
 		      $.support.cors = true;
-		   	alert("login with userid = " + this.userName + ", password = " + this.password);
+		//   	alert("login with userid = " + this.userName + ", password = " + this.password);
 
 		   	var loginOptions = {
 				url: MyAgDataMobile.configuration.accountUrl,
@@ -31,18 +31,18 @@
 		},
 		//method for user login
 		fnLoginCallBack: function (result) {
-		    alert("Login return = " + result.success);
+		//    alert("Login return = " + result.success);
 		    if (result.success === true && result.data != null) {
 			    viewModel.set("userId", result.data.UserId);
 			    viewModel.set("firstName", result.data.FirstName);
 			    viewModel.set("lastName", result.data.LastName);
 			    viewModel.set("userEmailAddress", result.data.EmailId);
 			    viewModel.set("isUserLoggedIn", true);
-			    alert("Login successfull");
+		//	    alert("Login successfull");
 			    getCropSeasonDefaults(result.data.UserId);
 			} else {
 			    //any error handling code
-			    alert("Unable to Login");
+	//		    alert("Unable to Login");
 			}
 		},
 
