@@ -35,10 +35,11 @@
 			    viewModel.set("lastName", result.data.LastName);
 			    viewModel.set("userEmailAddress", result.data.EmailId);
 			    viewModel.set("isUserLoggedIn", true);
-
+			    alert("Login successfull");
 			    getCropSeasonDefaults(result.data.UserId);
 			} else {
-				//any error handling code
+			    //any error handling code
+			    alert("Unable to Login");
 			}
 		},
 
