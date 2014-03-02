@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
      <script src="http://cdn.kendostatic.com/2013.1.319/js/kendo.all.min.js"> </script>   
      <link href="http://cdn.kendostatic.com/2013.1.319/styles/kendo.mobile.all.min.css" rel="stylesheet" />
@@ -10,6 +12,10 @@
     <link href="kendo/styles/kendo.mobile.flat.min.css" rel="stylesheet" />
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+  <!--  <script src="../../content/shared/js/console.js"></script>
+    <link href="../../../styles/kendo.mobile.all.min.css" rel="stylesheet" /> -->
+
     <script>
         var MyAgDataMobile = MyAgDataMobile || {};
     </script>
@@ -54,7 +60,10 @@
             <div class="centerAlign">
                 <a data-role="button" class="loginButton" id="login-button"  data-bind="click: userLogin">   Login   </a>
             </div>
-        </div> 
+               <a data-click="openModalView"  data-role="button">
+                       Open Modal View
+                </a>
+            </div> 
     </div>
     <div data-role="layout" data-id="account-layout">
         <header data-role="header">
@@ -281,6 +290,14 @@
         </footer>
     </div>
 
+    <div data-role="modalview" data-height="200px" data-width="300px" id="myModalView">
+         <div style="padding: 12px; color: white; font-size: large">
+            Field Maps coming soon..<br />
+             </div>
+            <span>Login</span>
+            <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>     
+    </div>
+
    <style scoped>
        
     .km-ios #partfield-list .km-listview .km-list > li {
@@ -289,7 +306,7 @@
     
    #account-view .km-content{
     background-size: auto 100%;
-    background-color: black;
+    background-color: white;
     background-repeat: repeat;
     }
 
@@ -930,6 +947,79 @@
         }
 
 
+
+
+
+
+          #modalview-login-button,
+    #modalview-reg-button,
+    #modalview-open-button {
+        display: block;
+        text-align: center;
+        margin: .6em .8em;
+        font-size: 1.2em;
+    }
+
+    #modalview-open-button {
+        margin: 0 3em;
+        padding: .5em;
+    }
+    .km-flat #modalview-open-button {
+        color: #fff;
+    }
+
+    #modalview-camera {
+        text-align: center;
+    }
+
+    #modalview-camera img {
+        display: block;
+        margin: 30px auto;
+    }
+
+    #modalview-camera .km-content,
+    .km-ios #modalview-login .km-content {
+        background: url(../../content/shared/images/patterns/pattern1.png) repeat 0 0;
+    }
+
+    #modalview-login label {
+        display: inline-block;
+        width: 100%;
+    }
+    .km-ios #modalview-camera .km-button,
+    .km-ios #modalview-login .km-button,
+    .km-ios #modalview-camera .km-navbar,
+    .km-ios #modalview-login .km-header,
+    .km-blackberry #modalview-camera .km-navbar,
+    .km-blackberry #modalview-login .km-navbar
+    {
+        background-color: #000;
+    }
+
+    .km-blackberry #modalview-camera .km-button
+    {
+        color: #fff;
+    }
+
+    .km-ios #modalview-camera .km-button:active,
+    .km-ios #modalview-camera .km-state-active,
+    .km-ios #modalview-login .km-button:active,
+    .km-ios #modalview-login .km-state-active {
+        background-color: #2e2e2e;
+    }
+
+    .km-ios #modalview-login #modalview-login-button,
+    .km-flat #modalview-login #modalview-login-button {
+        background-color: Green;
+        color: #fff;
+    }
+
+    .km-tablet .km-ios #modalview-camera .km-view-title,
+    .km-tablet .km-ios #modalview-login .km-view-title {
+        color: #fff;
+        text-shadow: 0 -1px rgba(0,0,0,.5);
+    }
+
 </style>
 
 
@@ -1054,6 +1144,16 @@
         });
 
         MyAgDataMobile.main.initializeApp();
+
+        function openModalView(e) {
+        //    alert("Made it");
+            $("#myModalView").data("kendoMobileModalView").open();
+        }
+
+        function closeModalViewLogin() {
+        //    alert("Made it");
+            $("#myModalView").kendoMobileModalView("close");
+        }
 
         function onGrowersClick(e) {
         //    alert("Grower Click Crop Year Value = " + myCropYear);

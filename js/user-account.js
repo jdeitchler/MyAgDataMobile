@@ -15,7 +15,10 @@
 		userBookingHistory: [],
 		userLogin: function () {
 		      $.support.cors = true;
-		//   	alert("login with userid = " + this.userName + ", password = " + this.password);
+		   	alert("login with userid = " + this.userName + ", password = " + this.password);
+
+		   	$("#myModalView").data("kendoMobileModalView").open();
+		
 
 		   	var loginOptions = {
 				url: MyAgDataMobile.configuration.accountUrl,
