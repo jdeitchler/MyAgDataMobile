@@ -6,7 +6,7 @@
             type: options.requestType,
             data: options.data,   
             //   crossDomain: true,
-            timeout: 1000,
+            timeout: 5000,
             dataType: options.dataType,
         //    type: "group",
         //    fixedHeaders: true,
@@ -35,7 +35,7 @@
             error: function (xhr, status, errorThrown) {
                 //    alert("In Error");
                 if (status === "timeout") {
-                    alert("got timeout");
+                    $("#myModalView").data("kendoMobileModalView").open();
                 }
                 else {
                     switch (xhr.status) {
