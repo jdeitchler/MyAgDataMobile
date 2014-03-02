@@ -34,8 +34,9 @@
             error: function (xhr, status, errorThrown) {
             //    alert("In Error");
                 switch(xhr.status){
-                    case '401' :
-                        alert('401 Unauthorized access detected.Please check the credentials you entered. ' + errorThrown);
+                    case 401 :
+                     //   alert('401 Unauthorized access detected.Please check the credentials you entered. ' + errorThrown);
+                        $("#myModalView").data("kendoMobileModalView").open();
                         break;
                     case '500' :
                         alert('500 Internal Server Error. Please check the service code.' + errorThrown);
