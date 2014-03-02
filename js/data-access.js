@@ -5,7 +5,8 @@
             url: options.url,   
             type: options.requestType,
             data: options.data,   
-         //   crossDomain: true,
+            //   crossDomain: true,
+            timeout: 1000,
             dataType: options.dataType,
         //    type: "group",
         //    fixedHeaders: true,
@@ -32,18 +33,23 @@
             },
             //Callback function incase of an error
             error: function (xhr, status, errorThrown) {
-            //    alert("In Error");
-                switch(xhr.status){
-                    case 401 :
-                     //   alert('401 Unauthorized access detected.Please check the credentials you entered. ' + errorThrown);
-                        $("#myModalView").data("kendoMobileModalView").open();
-                        break;
-                    case '500' :
-                        alert('500 Internal Server Error. Please check the service code.' + errorThrown);
-                        break;
-                    default :
-                        alert('Unexpected error: ' + errorThrown);
-                        break;
+                //    alert("In Error");
+                if (status === "timeout") {
+                    alert("got timeout");
+                }
+                else {
+                    switch (xhr.status) {
+                        case 401:
+                            //   alert('401 Unauthorized access detected.Please check the credentials you entered. ' + errorThrown);
+                            $("#myModalView").data("kendoMobileModalView").open();
+                            break;
+                        case '500':
+                            alert('500 Internal Server Error. Please check the service code.' + errorThrown);
+                            break;
+                        default:
+                            alert('Unexpected error: ' + errorThrown);
+                            break;
+                    }
                 }
                 var result = { success: false };                
                 options.callBack(result);
