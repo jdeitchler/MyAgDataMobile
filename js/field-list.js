@@ -16,7 +16,7 @@ MyAgDataMobile.fieldList = (function () {
 
     function getFieldList(groupBy) {
         //    alert("Get the List of Field for GrowerId = " + viewModel.selectedGrower.growerId);
-     //   alert("select FIeldList - userid = " + viewModel.selectedGrower.userId + ", GrowerId = " + viewModel.selectedGrower.growerId + ", CropYear = " + myCropYear + ", Season = " + mySeasonValue + ", FarmOperation = " + myFarmOperationValue);
+   //   alert("select FIeldList - userid = " + viewModel.selectedGrower.userId + ", GrowerId = " + viewModel.selectedGrower.growerId + ", CropYear = " + myCropYear + ", Season = " + mySeasonValue + ", FarmOperation = " + myFarmOperationValue);
 
         var serviceOptions = {
             url: MyAgDataMobile.configuration.getFieldListUrl,
