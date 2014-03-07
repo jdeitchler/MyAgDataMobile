@@ -1,12 +1,22 @@
 ﻿MyAgDataMobile.dataAccess = (function () {
 
-    function callService(options){
+    function callService(options) {
+        var timeoutValue = 15000;
+        var LoginRequest = false;
+
+        // Looking for the URL: http://myagdatawebapi.cloudapp.net/api/Account/
+        var n = options.url.indexOf("api/Account");
+        if (n > 0) {
+            timeoutValue = 5000;
+            LoginRequest = true;
+        }
+
         $.ajax({
             url: options.url,   
             type: options.requestType,
             data: options.data,   
             //   crossDomain: true,
-            timeout: 5000,
+            timeout: timeoutValue,
             dataType: options.dataType,
         //    type: "group",
         //    fixedHeaders: true,
@@ -35,13 +45,19 @@
             error: function (xhr, status, errorThrown) {
                 //    alert("In Error");
                 if (status === "timeout") {
-                    $("#myModalView").data("kendoMobileModalView").open();
+                    if (LoginRequest == true)
+                        $("#myModalView").data("kendoMobileModalView").open();
+                    else
+                        alert("Request timed out");
                 }
                 else {
                     switch (xhr.status) {
                         case 401:
                             //   alert('401 Unauthorized access detected.Please check the credentials you entered. ' + errorThrown);
-                            $("#myModalView").data("kendoMobileModalView").open();
+                            if (LoginRequest == true)
+                                $("#myModalView").data("kendoMobileModalView").open();
+                            else
+                                alert('Request timed out');
                             break;
                         case '500':
                             alert('500 Internal Server Error. Please check the service code.' + errorThrown);
