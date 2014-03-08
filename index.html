@@ -287,8 +287,8 @@
         </footer>
     </div>
 
-    <div data-role="modalview" data-height="100px" data-width="220px" id="myModalView">
-         <div style="padding: 10px;   color: black; font-size: large">
+    <div data-role="modalview" data-height="100px" data-width="220px" id="myModalView" style="color:white; background-color: white;">
+         <div style="padding: 10px;  background-color: white; color: black; font-size: large">
             &nbsp;&nbsp;&nbsp;Unauthorized User<br />
              </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-click="closeModalViewLogin" data-role="button" data-align="right">OK</a>     
@@ -943,6 +943,14 @@
         span.k-numerictextbox {
         width: 8em;
         }
+
+        .km-ios .km-modalview>:first-child:last-child, .km-ios .km-pane>.km-view>:first-child:last-child {
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        background-color: white;
+        }
+
 
 </style>
 
