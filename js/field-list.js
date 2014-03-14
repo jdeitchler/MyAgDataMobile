@@ -128,6 +128,10 @@ MyAgDataMobile.fieldList = (function () {
             getFieldList("CropName");
         else 
             getFieldList("FieldName");
+
+        $("#fieldlistButtonGroup").kendoButtonGroup({
+           visible: true
+        });
     }
 
     function initializeApp2() {
@@ -158,6 +162,10 @@ MyAgDataMobile.fieldList = (function () {
             if (application.pane) {
                 application.hideLoading();
             }
+        });
+
+        $("#fieldlistButtonGroup").kendoButtonGroup({
+            visible: true
         });
     }
 
