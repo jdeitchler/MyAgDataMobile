@@ -88,8 +88,6 @@ MyAgDataMobile.fieldList = (function () {
      //   alert('made it to the Initialize Field list');
         var buttongroup = $("#fieldlistButtonGroup").data("kendoMobileButtonGroup");
 
-        buttongroup.selectedIndex = 0;
-
         //hard coding today's date for selected date
         viewModel.set('selectedDate', new Date().toLocaleDateString());
         //read the selected movie's details from the query string
