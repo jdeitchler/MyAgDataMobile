@@ -6,9 +6,11 @@
     }
 
     function initializeApp() {
+
         application = new kendo.mobile.Application(document.body,
             {
                 //   transition: 'slide',
+             //   useNativeScrolling: true,
                 loading: "<h3>Loading...</h3>",
                // platform: 'ios6'
                  skin: "ios"
