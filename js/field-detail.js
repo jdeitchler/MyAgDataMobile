@@ -24,6 +24,7 @@
         countyName: "County name",
         stateName: "State name",
         fieldAcres: 0,
+        fieldAcresReadOnly: "",
         plantedAcres: 0,
         share: 0,
         fieldName: "Field Name",
@@ -175,6 +176,7 @@
                 viewModel.set("countyName", result.data.GrowerCountyName);
                 viewModel.set("stateName", result.data.GrowerStateName);
                 viewModel.set("fieldAcres", result.data.CalculatedAcres);
+                viewModel.set("fieldAcresReadOnly", result.data.CalculatedAcres + " acres");
                 viewModel.set("plantedAcres", result.data.ReportedAcres);
                 viewModel.set("share", result.data.FieldShare);
                 viewModel.set("fieldName", result.data.CommonFarmName);
@@ -214,14 +216,12 @@
                            value: new Date(intYear, intMonth, intDay),
                            change: function () {
                                var value = this.value();
-
                                viewModel.set("plantDate", value);
-
                                //      alert("Select Date = " + value); //value is the selected date in the datepicker
                            }
-
                        });
                    
+                       $("#plantingdate").closest("span.k-datepicker").width(120);
 
                     //   $("#plantingdate").attr('value', new Date('2013-08-11'));
                     //  $("#plantingdate").kendoDatePicker();
@@ -236,7 +236,7 @@
                     // create Percentage NumericTextBox from input HTML element
               $("#Share").kendoNumericTextBox({
                     format: "p0",
-                //    value: result.data.FieldShare,
+                  //    value: result.data.FieldShare,
                         type: Number,
                         min: 0,
                         max: 1.00,
@@ -250,13 +250,14 @@
                   });
               });
 
-              $("#FAcres").kendoNumericTextBox({
-                  format: "#.00 acres",
-                  decimals: 2,
-                  min: 0,
-                  max: 100000,
-                  spinners: false
-              });
+              //$("#FAcres").kendoNumericTextBox({
+              //    format: "#.00 acres",
+              //    decimals: 2,
+              //    min: 0,
+              //    disabled: true,
+              //    max: 100000,
+              //    spinners: false
+              //});
 
               $("#PAcres").kendoNumericTextBox({
                   format: "#.00 acres",
