@@ -64,6 +64,10 @@ MyAgDataMobile.fieldList = (function () {
                         $("#partfield-list").append("<br /><h2 style='color : #FFFFFF;'><br/>This grower does not have any fields for the selected Crop Year, Season and Farming Operation. </h2>");
                     }
 
+                    $("#fieldlistButtonGroup").kendoMobileButtonGroup({
+                        visible: true
+                    });
+
                 } else {
                     //any error handling code
                 }
@@ -129,7 +133,7 @@ MyAgDataMobile.fieldList = (function () {
         else 
             getFieldList("FieldName");
 
-        $("#fieldlistButtonGroup").kendoButtonGroup({
+        $("#fieldlistButtonGroup").kendoMobileButtonGroup({
            visible: true
         });
     }
@@ -164,7 +168,7 @@ MyAgDataMobile.fieldList = (function () {
             }
         });
 
-        $("#fieldlistButtonGroup").kendoButtonGroup({
+        $("#fieldlistButtonGroup").kendoMobileButtonGroup({
             visible: true
         });
     }
