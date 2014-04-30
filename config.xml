@@ -4,10 +4,10 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.myagdata.MyAgDataMobile"
-        version   = "1.0.0">
+        version   = "1.0">
 
     <name>MyAgData</name>
-
+    
     <description>
         MyAgData Mobile App
     </description>
