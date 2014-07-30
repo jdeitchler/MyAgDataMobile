@@ -33,7 +33,7 @@
 		},
 		//method for user login
 		fnLoginCallBack: function (result) {
-		//    alert("Login return = " + result.success);
+	//	    alert("Login return = " + result.success);
 		    if (result.success === true && result.data != null) {
 			    viewModel.set("userId", result.data.UserId);
 			    viewModel.set("firstName", result.data.FirstName);

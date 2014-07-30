@@ -9,7 +9,7 @@
    $.support.cors = true;
 
     function getGrowerList(listType) {
-  //      alert("Get GrowerList, userid = " + myUserId + ", CropYear = " + myCropYear);
+      //  alert("Get GrowerList, userid = " + myUserId + ", CropYear = " + myCropYear);
         var growerListoptions = {
             url: MyAgDataMobile.configuration.getGrowerListUrl,
             data: { userid: myUserId, cropyear: myCropYear}, // 2013 },   //id=16&cropyear=2013  userid=16&cropyear=2013
